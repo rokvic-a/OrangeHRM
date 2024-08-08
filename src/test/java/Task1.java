@@ -1,12 +1,13 @@
 import org.openqa.selenium.By;
+import org.openqa.selenium.StaleElementReferenceException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.support.ui.Select;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 
 import java.time.Duration;
-import java.util.List;
 
 public class Task1 {
 
@@ -15,6 +16,7 @@ public class Task1 {
         WebDriver driver;
 
         driver = new ChromeDriver();
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
 
         String URL = "https://opensource-demo.orangehrmlive.com/web/index.php/auth/login";
         String website = "https://opensource-demo.orangehrmlive.com/web/index.php/dashboard/index";
@@ -36,10 +38,10 @@ public class Task1 {
 
         WebElement userNameInput = driver.findElement(By.cssSelector("input[name='username']"));
         WebElement passwordInput = driver.findElement(By.cssSelector("input[name='password']"));
-        WebElement submitButton = driver.findElement(By.cssSelector("button[type='submit']"));
+        WebElement loginButton = driver.findElement(By.cssSelector("button[type='submit']"));
         userNameInput.sendKeys("Admin");
         passwordInput.sendKeys("admin123");
-        submitButton.click();
+        loginButton.click();
         Assert.assertEquals(driver.getCurrentUrl(), website);
 
         WebElement adminModule = driver.findElement(By.cssSelector("a[href='/web/index.php/admin/viewAdminModule']"));
@@ -85,7 +87,31 @@ public class Task1 {
         WebElement buzzModule = driver.findElement(By.cssSelector("a[href='/web/index.php/buzz/viewBuzz']"));
         buzzModule.click();
         Assert.assertEquals(driver.getCurrentUrl(), buzzPage);
+
+        WebElement profileDropdown = driver.findElement(By.cssSelector(".oxd-userdropdown-tab"));
+        profileDropdown.click();
+
+        WebElement userLogOut = driver.findElement(By.cssSelector("a[role='menuitem'][href='/web/index.php/auth/logout']"));
+        userLogOut.click();
+
+        Assert.assertEquals(driver.getCurrentUrl(), URL);
+
+        try {
+            WebElement submitButton = wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("button[type='submit']")));
+            Assert.assertTrue(submitButton.isDisplayed());
+        } catch (StaleElementReferenceException e) {
+            WebElement loginButton1 = driver.findElement(By.cssSelector("button[type='submit']"));
+            Assert.assertTrue(loginButton1.isDisplayed());
+        } finally {
+            driver.quit();
         }
+
+
+
+
+        }
+
+
     }
 
 
