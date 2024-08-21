@@ -120,7 +120,6 @@ public class AdminPage extends BaseTest {
 
     public void searchUser(String name) {
         systemUsername.sendKeys("");
-        //systemUserRole.click();
         systemUserRole.sendKeys(Keys.ARROW_DOWN);
         systemUserRole.sendKeys(Keys.ENTER);
         systemEmployeeName.sendKeys(name);
@@ -165,7 +164,6 @@ public class AdminPage extends BaseTest {
         try {
             Thread.sleep(3000);
             List<WebElement> employeeCells = driver.findElements(By.cssSelector("div[role='table'] div[role='row'] > div:nth-of-type(4)"));
-
             for (WebElement cell : employeeCells) {
                 if (cell.getText().equals(employeeName)) {
                     ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", cell);
@@ -180,6 +178,5 @@ public class AdminPage extends BaseTest {
             return null;
         }
     }
-
 }
 
