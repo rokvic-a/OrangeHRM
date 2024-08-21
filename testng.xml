@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="All Test Suite">
+    <test verbose="2" preserve-order="true" name="C:/Users/aleksandar.rokvic/IdeaProjects/OrangeHRM">
+        <classes>
+            <class name="Test.LoginTest">
+                <methods>
+                    <include name="loginWithoutUsername"/>
+                    <include name="loginWithoutPassword"/>
+                    <include name="passwordRestore"/>
+                    <include name="userLogOut"/>
+                    <include name="loginWithEmptyUsernameAndPassword"/>
+                    <include name="loginWithInvalidUsername"/>
+                    <include name="loginWithInvalidPassword"/>
+                    <include name="loginWithValidCredentials"/>
+                </methods>
+            </class>
+            <class name="Test.SearchTest">
+                <methods>
+                    <include name="searchBar"/>
+                </methods>
+            </class>
+            <class name="Test.RedirectionTest">
+                <methods>
+                    <include name="redirectToAdmin"/>
+                    <include name="redirectToPIM"/>
+                    <include name="redirectToLeave"/>
+                    <include name="redirectToTime"/>
+                    <include name="redirectToRecruitment"/>
+                    <include name="redirectToMyInfo"/>
+                    <include name="redirectToPerformance"/>
+                    <include name="redirectToDashboard"/>
+                    <include name="redirectToDirectory"/>
+                    <include name="redirectToMaintenance"/>
+                    <include name="redirectToClaim"/>
+                    <include name="redirectToBuzz"/>
+                </methods>
+            </class>
+            <class name="Test.PIMTest">
+                <methods>
+                    <include name="addNewEmployee"/>
+                    <include name="editNewEmployee"/>
+                    <include name="searchNewEmployee"/>
+                </methods>
+            </class>
+            <class name="Test.BuzzTest">
+                <methods>
+                    <include name="sharePostOnBuzz"/>
+                    <include name="likePostOnBuzz"/>
+                    <include name="commentPostOnBuzz"/>
+                    <include name="sortPostsByLikes"/>
+                    <include name="sortPostsByComments"/>
+                    <include name="sortPostsByDate"/>
+                </methods>
+            </class>
+            <class name="Test.AdminTest">
+                <methods>
+                    <include name="addNewUser"/>
+                    <include name="searchNewUser"/>
+                    <include name="configureBuzzModule"/>
+                </methods>
+            </class>
+            <class name="Test.MaintenanceTest">
+                <methods>
+                    <include name="additionalLogin"/>
+                </methods>
+            </class>
+            <class name="Test.MyInfoTest">
+                <methods>
+                    <include name="editPersonalDetails"/>
+                </methods>
+            </class>
+            <class name="Test.ClaimTest">
+                <methods>
+                    <include name="submitNewClaim"/>
+                </methods>
+            </class>
+            <class name="Test.PerformanceTest">
+                <methods>
+                    <include name="addNewTrackerLog"/>
+                    <include name="editNewTrackerLog"/>
+                    <include name="deleteNewTrackerLog"/>
+                </methods>
+            </class>
+            <class name="Test.RecruitmentTest">
+                <methods>
+                    <include name="addNewCandidate"/>
+                    <include name="viewNewCandidate"/>
+                    <include name="deleteNewCandidate"/>
+                </methods>
+            </class>
+            <class name="Test.LeaveTest">
+                <methods>
+                    <include name="applyNewLeave"/>
+                </methods>
+            </class>
+            <class name="Test.DirectoryTest">
+                <methods>
+                    <include name="searchEmployeeByName"/>
+                    <include name="searchEmployeeByJobTitle"/>
+                    <include name="searchEmployeeByLocation"/>
+                    <include name="searchEmployeeUsingAllFilters"/>
+                </methods>
+            </class>
+            <class name="Test.TimeTest">
+                <methods>
+                    <include name="addNewPunchInOutRecord"/>
+                    <include name="editNewPunchInOutRecord"/>
+                    <include name="deleteNewPunchInOutRecord"/>
+                </methods>
+            </class>
+            <class name="Test.CleanUp">
+                <methods>
+                    <include name="deleteNewUserFromAdmin"/>
+                    <include name="deleteNewEmployeeFromPIM"/>
+                </methods>
+            </class>
+
+        </classes>
+    </test>
+</suite>
